@@ -1,0 +1,7 @@
+name: XConomy-Plus
+version: '${project.version}'
+main: cc.mousse.xconomyplus.XConomyPlus
+api-version: 1.20
+depend: [ XConomy ]
+authors: [ PhineasZ ]
+description: 提供与外界实时同步余额的功能
