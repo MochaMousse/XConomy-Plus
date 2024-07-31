@@ -1,26 +1,23 @@
 package cc.mousse.xconomyplus;
 
-import lombok.val;
-import me.yic.xconomy.api.XConomyAPI;
-import org.apache.commons.lang3.StringUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.UUID;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import lombok.val;
+import me.yic.xconomy.api.XConomyAPI;
+import org.apache.commons.lang3.StringUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * @author PhineasZ
+ * @author MochaMousse
  */
 public final class XConomyPlus extends JavaPlugin {
-
   private static final String PLUGIN_NAME = "XConomy-Plus";
   private static final String TABLE_NAME = "notice";
-
   private boolean runningFlag;
   private XConomyAPI xConomyApi;
   private Connection conn;
@@ -138,9 +135,9 @@ public final class XConomyPlus extends JavaPlugin {
           var course = "玩家" + name + "[" + uuid + "][" + oldBalance + "]";
           switch (status) {
             case 0 -> this.getLogger().info(message);
-            case 2 -> this.getLogger().warning(course + "余额不足");
-            case 3 -> this.getLogger().warning(course + "余额超出最大值");
-            default -> this.getLogger().info(course + "余额相同");
+            case 2 -> this.getLogger().warning(course.concat("余额不足"));
+            case 3 -> this.getLogger().warning(course.concat("余额超出最大值"));
+            default -> this.getLogger().info(course.concat("余额相同"));
           }
           // 添加到批处理
           delPs.setLong(1, getRs.getLong("id"));
